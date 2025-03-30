@@ -32,3 +32,17 @@ target_link_libraries(${PROJECT_NAME}
     CUDA::curand)
 
 target_compile_options(${PROJECT_NAME} PUBLIC $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>)
+
+add_executable(getrf-float getrf-float.cu)
+
+# 链接 CUDA 库
+target_link_libraries(${PROJECT_NAME}-float 
+    CUDA::cuda_driver 
+    CUDA::cudart
+    CUDA::cusparse
+    CUDA::cublas
+    CUDA::cublasLt
+    CUDA::cusolver
+    CUDA::curand)
+
+target_compile_options(${PROJECT_NAME}-float PUBLIC $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>)
